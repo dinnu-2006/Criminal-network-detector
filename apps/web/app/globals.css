@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --bg-void: #020502;
+  --bg-space: #040905;
+  --bg-surface: #071209;
+  --bg-elevated: #0B1B0F;
+  --bg-hover: #122817;
+  --border-subtle: rgba(34, 197, 94, 0.18);
+  --border-dim: #133319;
+  --border-cyan: rgba(34, 197, 94, 0.4);
+
+  --text-primary: #D1FAD7;
+  --text-secondary: #86EFAC;
+  --text-muted: #4A7C55;
+  --text-dim: #2A4C32;
+
+  --accent-cyan: #22C55E;
+  --accent-cyan-glow: rgba(34, 197, 94, 0.35);
+  --accent-blue: #16A34A;
+  --accent-amber: #FFB000;
+  --accent-red: #EF4444;
+
+  --status-green: #00FF66;
+  --status-amber: #FFB000;
+  --status-red: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Courier New', monospace, -apple-system, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Authentic Old Computer CRT Scanline Overlay */
+body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.22) 50%);
+  background-size: 100% 3px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* Custom scrollbars with retro terminal green */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: rgba(4, 9, 5, 0.8); }
+::-webkit-scrollbar-thumb { background: rgba(34, 197, 94, 0.25); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(34, 197, 94, 0.55); }
+
+.font-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+/* Retro CRT Glowing effects */
+.glow-cyan {
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.45);
+}
+
+.glow-cyan-sm {
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.35);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 10px rgba(0, 255, 102, 0.65), 0 0 20px rgba(34, 197, 94, 0.35);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.6);
+}
+
+/* Retro CRT terminal panels */
+.nexus-panel {
+  background: rgba(5, 14, 7, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.28);
+}
+
+.nexus-card {
+  background: rgba(7, 18, 9, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(34, 197, 94, 0.22);
+}
+
+.nexus-card:hover {
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.15);
+}
+
+/* Custom range input slider (Phosphor Green) */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #0D2613;
+  height: 4px;
+  border-radius: 1px;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #22C55E;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+  border: 2px solid #030804;
+  transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Custom Checkbox (Retro CRT Terminal) */
+.nexus-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  border-radius: 1px;
+  background: rgba(4, 12, 6, 0.9);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s;
+}
+
+.nexus-checkbox:checked {
+  background: #15803D;
+  border-color: #22C55E;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+}
+
+.nexus-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: 10px;
+  color: #D1FAD7;
+  font-weight: bold;
+}
+
+/* Animation utilities */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
